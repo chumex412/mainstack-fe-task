@@ -19,10 +19,14 @@ const config: Config = {
         // => @media (min-width: 1024px) { ... }
         xl: "960px",
         // => @media (min-width: 1280px) { ... }
-        "2xl": "1140px",
-        "3xl": "1232px",
+        "2xl": "1168px",
+        "3xl": "1288px",
         // => @media (min-width: 1536px) { ... }
-        "4xl": "1312px"
+        "4xl": "1408px"
+      },
+      backgroundImage: {
+        "c-gradient":
+          "linear-gradient(138.98deg, #5C6670 2.33%, #131316 96.28%)"
       },
       colors: {
         black: {
@@ -53,6 +57,10 @@ const config: Config = {
         lg: "var(--h3)",
         xl: "var(--h2)",
         "2xl": "var(--h1)"
+      },
+      lineHeight: {
+        sl: "var(--slh)",
+        ll: "var(--llh)"
       }
     }
   },
