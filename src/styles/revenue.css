@@ -1,0 +1,27 @@
+@tailwind components;
+
+@layer components {
+  .payout-main {
+    display: grid;
+    grid-auto-rows: auto;
+    width: 100%;
+    gap: 20px;
+  }
+
+  @media only screen and (min-width: theme("screens.xl")) {
+    .payout-main {
+      grid-template-columns: 770px 271px;
+      justify-content: space-between;
+    }
+
+    .payout-chart {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .payout-details {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+    }
+  }
+}

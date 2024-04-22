@@ -13,7 +13,16 @@ export interface BalanceLabelProps {
   amount: number;
 }
 
-export interface PrimaryButtonProps {
+export interface ButtonProps {
   value: string;
   customClass?: string;
+  icon?: string;
+}
+
+export interface Transaction {
+  title?: string;
+  name?: string;
+  status?: string;
+  amount: number;
+  timestamp: Date | string;
 }
