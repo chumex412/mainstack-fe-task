@@ -8,7 +8,7 @@ const PayoutDetails = ({
   pendingPay
 }: PayoutDetailsProps) => {
   return (
-    <section className="flex w-full max-w-[271px] flex-col gap-y-8">
+    <section className="payout-details flex w-full max-w-[271px] flex-col gap-y-8">
       <BalanceLabel title="Ledger Balance" amount={ledgerBal} />
       <BalanceLabel title="Total Payout" amount={totalPay} />
       <BalanceLabel title="Total Balance" amount={totalBal} />

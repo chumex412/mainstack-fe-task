@@ -6,9 +6,11 @@ import React from "react";
 
 const Payout = () => {
   return (
-    <section className="container flex flex-col justify-between gap-5 py-16 lg:flex-row">
-      <PayoutChartContainer />
-      <PayoutDetailsContainer />
+    <section className="container flex flex-col gap-5 py-16 lg:flex-row">
+      <section className="payout-main">
+        <PayoutChartContainer />
+        <PayoutDetailsContainer />
+      </section>
     </section>
   );
 };
