@@ -16,6 +16,11 @@
     --h2: calc(1.75rem * var(--type-scale-2));
     --h1: calc(2.25rem * var(--type-scale));
 
+    /* LINE HEIGHT */
+
+    --slh: 120%;
+    --llh: 150%;
+
     /* COLOR */
 
     --black-300: 19 19 22;
@@ -53,5 +58,12 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .container {
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 }
