@@ -30,7 +30,7 @@ const config: Config = {
       },
       colors: {
         black: {
-          300: "rgb(var(--primary-300) / 1)"
+          300: "rgb(var(--black-300) / 1)"
         },
         gray: {
           50: "rgb(var(--gray-50) / 1)",
