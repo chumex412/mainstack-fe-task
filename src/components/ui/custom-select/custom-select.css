@@ -1,0 +1,19 @@
+@tailwind components;
+
+@layer components {
+	.custom-select-wrapper .caret {
+		transition: transform 0.3s ease-out;
+		-moz-transition: transform 0.3s ease-out;
+		-webkit-transition: transform 0.3s ease-out;
+	}
+
+	.custom-select-wrapper .caret.turn {
+		transform: rotate(180deg);
+		-moz-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+	}
+
+	.ds-select__overylay {
+
+	}
+}

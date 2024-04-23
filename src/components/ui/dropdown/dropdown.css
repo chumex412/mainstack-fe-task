@@ -1,0 +1,42 @@
+@tailwind components;
+
+@layer components {
+  /* Library custom scrollbar */
+
+  .ds-select__options--wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: #d8d8d8b2 transparent;
+  }
+
+  .ds-select__options--wrapper::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  .ds-select__options--wrapper::-webkit-scrollbar-track {
+    background: theme("colors.gray.50");
+  }
+
+  .ds-select__options--wrapper::-webkit-scrollbar-thumb {
+    background-color: #ffffffb2;
+    border-radius: 8px;
+    border-color: transparent;
+  }
+
+  .ds-select__options--wrapper li {
+    cursor: pointer;
+  }
+
+  .ds-select__option--highlighted {
+    background-color: theme("colors.gray.50");
+    color: theme("colors.gray.400");
+  }
+
+  .ds-select__option--selected {
+    background-color: theme("colors.gray.300");
+    color: theme("colors.white");
+  }
+
+  .ds-select__option input[type="checkbox"] {
+    accent-color: theme("colors.black.300");
+  }
+}
