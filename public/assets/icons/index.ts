@@ -1,6 +1,7 @@
 import callMadeIcon from "./call_made.svg";
 import callRecvIcon from "./call_received.svg";
 import chatsIcon from "./chats.svg";
+import closeIcon from "./close.svg";
 import downloadIcon from "./download.svg";
 import expandIcon from "./expand.svg";
 import groupIcon from "./group.svg";
@@ -15,6 +16,7 @@ export {
   callMadeIcon,
   callRecvIcon,
   chatsIcon,
+  closeIcon,
   downloadIcon,
   expandIcon,
   groupIcon,

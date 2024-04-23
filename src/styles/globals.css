@@ -66,4 +66,8 @@
     margin: 0 auto;
     padding: 0 1rem;
   }
+
+  .modal-open {
+    overflow: hidden;
+  }
 }
