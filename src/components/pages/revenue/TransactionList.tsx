@@ -4,10 +4,10 @@ import { TransactionItem } from "@/components/ui";
 
 const TransactionList = ({ list }: GenericList<Transaction>) => {
   return (
-    <section className="flex flex-col gap-x-4">
-      {list.map((item) => (
+    <section className="flex flex-col gap-y-6">
+      {list.map((item, idx) => (
         <TransactionItem
-          key={item.title}
+          key={item.title || "" + idx}
           title={item.title}
           timestamp={item.timestamp}
           amount={item.amount}
