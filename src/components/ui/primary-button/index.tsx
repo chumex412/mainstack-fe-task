@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef } from "react";
-import { PrimaryButtonProps } from "@/application/domain/entities/ui";
+import { ButtonProps } from "@/application/domain/entities/ui";
 
-type ButtonType = PrimaryButtonProps & ComponentPropsWithoutRef<"button">;
+type ButtonType = ButtonProps & ComponentPropsWithoutRef<"button">;
 
 const PrimaryButton = ({ customClass, value, ...props }: ButtonType) => {
   return (

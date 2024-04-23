@@ -1,6 +1,8 @@
-import { Transaction } from "@/application/domain/entities/ui";
 import Image from "next/image";
+import { Transaction } from "@/application/domain/entities/ui";
 import { callMadeIcon, callRecvIcon } from "../../../../public/assets/icons";
+import "./transaction-item.css";
+import { formatCurrency, getFormatedDate } from "@/utils/format";
 
 const TransactionItem = ({
   title,
@@ -10,20 +12,30 @@ const TransactionItem = ({
   timestamp
 }: Transaction) => {
   return (
-    <article className="flex justify-between gap-2">
-      <div>
+    <article className="transaction-item gap-2">
+      <div
+        className={`flex h-8 w-8 items-center justify-center rounded-full ${name ? "bg-green-50" : "bg-red-50"} lg:h-12 lg:w-12`}
+      >
         <Image
-          src={name ? callMadeIcon : callRecvIcon}
+          src={name ? callRecvIcon : callMadeIcon}
           alt={name ? "Call made icon" : "Call received icon"}
         />
-        <div>
-          <h4>{title || ""}</h4>
-          <p>{name || status}</p>
-        </div>
       </div>
+
       <div>
-        <strong>USD {amount}</strong>
-        <p>{""}</p>
+        <h4 className="mb-2 text-base font-medium capitalize leading-ll text-black-300">
+          {title || ""}
+        </h4>
+        <p
+          className={`text-sm font-medium capitalize leading-ll ${name ? "text-gray-400" : status === "pending" ? "text-orange-300" : "text-green-400"}`}
+        >
+          {name || status}
+        </p>
+      </div>
+
+      <div>
+        <strong>{formatCurrency(amount)}</strong>
+        <p>{getFormatedDate(timestamp, "en-US")}</p>
       </div>
     </article>
   );

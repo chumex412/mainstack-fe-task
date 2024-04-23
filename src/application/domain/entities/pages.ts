@@ -20,8 +20,16 @@ export interface BalanceProps {
 export interface TransactionHeaderProps {
   total: number;
   period: string;
+  onOpen: () => void;
 }
 
 export interface TransactionListProps {
   list: Transaction[];
+}
+
+export interface FilterContentProps {
+  showTypesOptions: boolean;
+  showTypesOptionsHandler: (val: boolean) => void;
+  showStatOptions: boolean;
+  showStatOptionsHandler: (val: boolean) => void;
 }

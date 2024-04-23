@@ -16,9 +16,17 @@ export type TransactionDataType = {
   metadata?: TransactionMetaData;
 };
 
+type FilterActionPayload<T> = {
+  txns: T[];
+  filters: {
+    option: FilterOptionsTypes;
+    type: string;
+  };
+};
+
 type TransactionFilterAction<T> = {
   type: "transaction/filter";
-  payload: T[];
+  payload: FilterActionPayload<T>;
 };
 
 type AllTransaction<T> = {
@@ -28,13 +36,29 @@ type AllTransaction<T> = {
 
 type FilterOptionsTypes = "none" | "range" | "type" | "status";
 
+type FiltersType = {
+  options: FilterOptionsTypes[];
+  type: string;
+  showModal: boolean;
+};
+
+type ModalPayload = {
+  isVisible: boolean;
+};
+
+type TransactionModalAction = {
+  type: "transaction/modal";
+  payload: ModalPayload;
+};
+
 export type TransactionAction<T> =
   | AllTransaction<T>
-  | TransactionFilterAction<T>;
+  | TransactionFilterAction<T>
+  | TransactionModalAction;
 
 export type TransactionState<T> = {
   txns: T[];
-  filterOptions: FilterOptionsTypes[];
+  filters: FiltersType;
 };
 
 export type PayoutDetailsType = {
@@ -45,12 +69,31 @@ export type PayoutDetailsType = {
   total_revenue: number;
 };
 
+type KeyboardKeys = {
+  ENTER: number | string;
+  SPACE: number | string;
+  DOWN_ARROW: number | string;
+  UP: number | string;
+  ESC: number | string;
+};
+
+export interface Constants {
+  timeout: ReturnType<typeof setTimeout>;
+  timerInterval: ReturnType<typeof setInterval>;
+  keyboardKeys: KeyboardKeys;
+}
+
 export interface GenericList<T> {
   list: T[];
 }
 
 export interface TransactionContextValue<S, T> {
   txns: S[];
-  filters: FilterOptionsTypes[];
+  filters: FiltersType;
   txnDispatch: T;
+}
+
+export interface ReactPortalProps<T> {
+  children: T;
+  wrapperId: string;
 }
