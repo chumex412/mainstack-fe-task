@@ -2,7 +2,6 @@ import {
   PayoutChartContainer,
   PayoutDetailsContainer
 } from "@/components/containers";
-import React from "react";
 
 const Payout = () => {
   return (

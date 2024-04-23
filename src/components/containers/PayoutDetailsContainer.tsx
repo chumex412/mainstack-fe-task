@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Balance, PayoutDetails } from "../pages/revenue";
 import { getData } from "@/application/services/request";
+import { PayoutDetailsType } from "@/application/domain/entities/general";
 
 const PayoutDetailsContainer = () => {
   const { data, isLoading, error } = useQuery<PayoutDetailsType | undefined>({

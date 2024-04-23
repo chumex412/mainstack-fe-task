@@ -1,17 +1,15 @@
 "use client";
 
-import { Chart } from "@/components/lib";
-import { PrimaryButton } from "@/components/ui";
 import { useState } from "react";
+import { Transaction } from "@/application/domain/entities/ui";
+import { Chart } from "@/components/lib";
 
-const PayoutChart = ({ data = [] }) => {
+const PayoutChart = ({ data = [] }: { data: Transaction[] }) => {
   const [balance, setBalance] = useState(0);
-
-  console.log({ data });
 
   return (
     <section className="payout-chart w-full max-w-[770px]">
-      <Chart data={[]} dataKey="" />
+      <Chart data={data} dataKey="amount" axisLabel={{ x: "timestamp" }} />
     </section>
   );
 };
