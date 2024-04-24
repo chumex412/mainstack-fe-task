@@ -21,6 +21,10 @@ describe("Payout detail", function () {
       />
     );
 
-    // const sectionContainer = screen.
+    const sectionContainer = screen.getByRole("section");
+
+    expect(sectionContainer.classList.contains("payout-details")).toEqual(true);
+
+    
   });
 });

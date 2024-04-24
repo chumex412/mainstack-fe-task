@@ -42,7 +42,7 @@ const config: Config = {
   coverageProvider: "v8",
   moduleNameMapper: {
     // ...
-    "^@/*": "<rootDir>/src/*"
+    "^@/src/(.*)$": "<rootDir>/src/$1"
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"]
 
