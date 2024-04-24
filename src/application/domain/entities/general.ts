@@ -90,6 +90,7 @@ export type TransactionAction<T> =
 
 export type TransactionState<T> = {
   txns: T[];
+  txnLoading: boolean;
   initData: T[];
   filters: TxnFiltersType;
 };
@@ -123,6 +124,7 @@ export interface GenericList<T> {
 export interface TransactionContextValue<S, T> {
   txns: S[];
   initData: S[] | undefined;
+  txnLoading: boolean;
   filters: TxnFiltersType;
   txnDispatch: T;
 }

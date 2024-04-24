@@ -13,3 +13,9 @@ export interface CustomDateTime {
   type?: "date" | "time" | "date-time";
   alreadyBooked?: Date[];
 }
+
+export interface SkeletonLoaderProps {
+  count?: number;
+  baseColor?: string;
+  width?: number | string;
+}

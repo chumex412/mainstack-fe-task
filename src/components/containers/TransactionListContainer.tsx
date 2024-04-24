@@ -9,9 +9,10 @@ import {
 import useTransaction from "@/context/Transaction";
 import { useCallback } from "react";
 import { TRANSACTION_MODAL } from "@/application/store/types/transaction";
+import { SkeletonLoader } from "../lib";
 
 const TransactionContainer = () => {
-  const { txns, filters, txnDispatch } = useTransaction();
+  const { txns, filters, txnDispatch, txnLoading } = useTransaction();
 
   const onOpen = useCallback(() => {
     txnDispatch({ type: TRANSACTION_MODAL, payload: { isVisible: true } });
@@ -27,7 +28,13 @@ const TransactionContainer = () => {
           onOpen={onOpen}
         />
         <section className="pb-6">
-          {txns.length ? <TransactionList list={txns} /> : <FilterEmptyState />}
+          {txnLoading ? (
+            <SkeletonLoader count={5} />
+          ) : txns.length ? (
+            <TransactionList list={txns} />
+          ) : (
+            <FilterEmptyState />
+          )}
         </section>
       </div>
       <FilterModal />
