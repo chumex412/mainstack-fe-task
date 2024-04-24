@@ -14,7 +14,10 @@ const Balance = ({ balance }: BalanceProps) => {
         </p>
       </div>
       <div className="self-end">
-        <PrimaryButton value="Withdraw" customClass="bg-black-300 px-[52px]" />
+        <PrimaryButton
+          value="Withdraw"
+          customClass="bg-black-300 text-white px-[52px]"
+        />
       </div>
     </section>
   );
