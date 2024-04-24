@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { NavBar } from "@/components/ui";
 import { AppContainer } from "@/components/containers";
+import { degular } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: "",
@@ -15,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">
+      <body className={degular.variable}>
         <AppContainer>{children}</AppContainer>
       </body>
     </html>

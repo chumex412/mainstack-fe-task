@@ -50,7 +50,9 @@ const config: Config = {
         },
         white: "rgb(var(--white) / 1)"
       },
-      fontFamily: {},
+      fontFamily: {
+        degular: "var(--font-degular)"
+      },
       fontSize: {
         sm: "var(--sm)",
         base: "var(--base)",

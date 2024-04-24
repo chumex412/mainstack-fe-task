@@ -16,10 +16,29 @@ export type TransactionDataType = {
   metadata?: TransactionMetaData;
 };
 
+export type UserData = {
+  first_name: string;
+  last_name: string;
+  email: string;
+};
+
+type FilterDateAction = {
+  type: "filter/date";
+  payload: { date: Date | string; action: "startDate" | "endDate" | "period" };
+};
+
+export type FilterAction = FilterDateAction;
+
+export type FilterState = {
+  endDate: Date | null;
+  startDate: Date | null;
+  period: string;
+};
+
 type FilterActionPayload<T> = {
   txns: T[];
   filters: {
-    option: FilterOptionsTypes;
+    option: TxnFilterOptionsTypes;
     type: string;
   };
 };
@@ -34,12 +53,18 @@ type AllTransaction<T> = {
   payload: T[];
 };
 
-type FilterOptionsTypes = "none" | "range" | "type" | "status";
+type TxnFilterOptionsTypes = "none" | "range" | "type" | "status";
 
-type FiltersType = {
-  options: FilterOptionsTypes[];
+type TxnFiltersType = {
+  options: TxnFilterOptionsTypes[];
   type: string;
   showModal: boolean;
+};
+
+export type FilterOptionType = {
+  status?: string;
+  range?: string;
+  type?: string;
 };
 
 type ModalPayload = {
@@ -58,7 +83,7 @@ export type TransactionAction<T> =
 
 export type TransactionState<T> = {
   txns: T[];
-  filters: FiltersType;
+  filters: TxnFiltersType;
 };
 
 export type PayoutDetailsType = {
@@ -89,7 +114,7 @@ export interface GenericList<T> {
 
 export interface TransactionContextValue<S, T> {
   txns: S[];
-  filters: FiltersType;
+  filters: TxnFiltersType;
   txnDispatch: T;
 }
 
