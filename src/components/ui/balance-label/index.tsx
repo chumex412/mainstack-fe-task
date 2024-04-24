@@ -1,9 +1,10 @@
 import { BalanceLabelProps } from "@/application/domain/entities/ui";
 import { formatCurrency } from "@/utils/format";
+import InfoIcon from "../../../../public/assets/icons/info.svg";
 
 const BalanceLabel = ({ title, amount }: BalanceLabelProps) => {
   return (
-    <article>
+    <article className="flex justify-between">
       <div>
         <h2 className="mb-2.5 text-sm font-medium leading-sl text-gray-400">
           {title}
@@ -12,6 +13,7 @@ const BalanceLabel = ({ title, amount }: BalanceLabelProps) => {
           <strong>{formatCurrency(amount)}</strong>
         </p>
       </div>
+      <InfoIcon />
     </article>
   );
 };

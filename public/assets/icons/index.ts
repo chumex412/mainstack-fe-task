@@ -7,6 +7,7 @@ import emptyFileIcon from "./empty_file.svg?url";
 import expandIcon from "./expand.svg?url";
 import groupIcon from "./group.svg?url";
 import homeIcon from "./home.svg";
+import infoIcon from "./info.svg";
 import inserChartIcon from "./insert_chart.svg?url";
 import logo from "./logo.svg?url";
 import menuIcon from "./menu.svg?url";
