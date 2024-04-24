@@ -4,7 +4,7 @@ import { formatCurrency } from "@/utils/format";
 
 const Balance = ({ balance }: BalanceProps) => {
   return (
-    <section className="balance flex gap-x-16">
+    <section className="balance flex flex-col gap-x-16 md:flex-row">
       <div>
         <h2 className="mb-2.5 text-sm font-medium leading-ll text-gray-400">
           Available Balance
@@ -13,10 +13,10 @@ const Balance = ({ balance }: BalanceProps) => {
           <strong>{formatCurrency(balance)}</strong>
         </p>
       </div>
-      <div className="self-end">
+      <div className="md:self-end">
         <PrimaryButton
           value="Withdraw"
-          customClass="bg-black-300 text-white px-[52px]"
+          customClass="bg-black-300 w-full md:w-auto text-white px-[52px]"
         />
       </div>
     </section>

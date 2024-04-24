@@ -164,9 +164,9 @@ const FilterModalContent = ({
   }, [txnDispatch, filterDispatch]);
 
   return (
-    <section className="filter-content absolute left-0 top-0 h-full w-full px-[22px] py-6">
+    <section className="filter-content absolute left-0 top-0 h-full w-full px-[22px] pb-4 md:py-6">
       <form onSubmit={handleSubmit} className="h-full">
-        <section className="flex flex-col gap-y-6">
+        <section className="flex flex-col gap-y-3 md:gap-y-6">
           <div className="flex flex-wrap gap-3">
             {dateRange.map((value, idx) => (
               <Badge
@@ -210,7 +210,7 @@ const FilterModalContent = ({
             ref={txnStatRef}
           />
         </section>
-        <section className="flex w-full items-end">
+        <section className="flex w-full flex-col justify-end gap-4 md:flex-row md:items-end md:justify-normal">
           <PrimaryButton
             type="button"
             value="Clear"

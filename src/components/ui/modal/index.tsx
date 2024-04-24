@@ -53,7 +53,7 @@ const Modal = ({
         style={{ zIndex }}
       >
         <section
-          className={`modal ${show ? "show-modal" : ""} h-full bg-[#ffffff] p-4 lg:px-0 lg:py-0`}
+          className={`modal ${show ? "show-modal" : ""} h-full bg-[#ffffff]`}
           style={{ width: width + "px" }}
         >
           <section className="modal-header w-full items-center justify-between gap-x-4 px-4 py-5 lg:px-6">
