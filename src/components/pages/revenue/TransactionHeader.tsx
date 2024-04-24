@@ -43,7 +43,7 @@ const TransactionHeader = ({
   );
 
   return (
-    <section className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <section className="flex flex-col gap-4 border-b border-gray-50 pb-6 md:flex-row md:items-center md:justify-between">
       <div className="text-center md:text-left">
         <h3 className="text-base font-bold leading-ll text-black-300">
           {total} Transaction{total > 1 ? "s" : ""}
