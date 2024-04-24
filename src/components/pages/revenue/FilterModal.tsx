@@ -52,11 +52,11 @@ const FilterModal = () => {
         }
       }}
     >
-      <ReactPortal wrapperId="transacttion-filter-modal">
+      <ReactPortal wrapperId="transaction-filter-modal">
         <Modal
           show={filters.showModal}
           modalHeader={header}
-          width={456}
+          width={465}
           onClose={onClose}
         >
           <FilterModalContent
