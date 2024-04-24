@@ -1,11 +1,11 @@
-type Link = {
+type Link<T> = {
   name: string;
   path: string;
-  icon: string;
+  Icon: T;
 };
 
-export interface NavLinksProps {
-  links: Link[];
+export interface NavLinksProps<T> {
+  links: Link<T>[];
 }
 
 export interface MenuButtonProps {
@@ -19,14 +19,16 @@ export interface BalanceLabelProps {
   amount: number;
 }
 
-export interface ButtonProps {
-  value: string;
+export interface ButtonProps<T> {
+  label?: string | T;
+  value?: string;
   customClass?: string;
   icon?: string;
 }
 
 export interface Transaction {
   title?: string;
+  type: string;
   name?: string;
   status?: string;
   amount: number;
@@ -81,4 +83,10 @@ export interface BadgeProps<T> {
   onClick: (e: T) => void;
   index: number;
   selected: boolean;
+}
+
+interface Icons<T> {}
+
+export interface IconProps<T> extends Icons<T> {
+  color?: string;
 }

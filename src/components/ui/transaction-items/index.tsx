@@ -6,6 +6,7 @@ import { formatCurrency, getFormatedDate } from "@/utils/format";
 
 const TransactionItem = ({
   title,
+  type,
   name,
   status,
   amount,
@@ -24,7 +25,7 @@ const TransactionItem = ({
 
       <div>
         <h4 className="mb-2 text-base font-medium capitalize leading-ll text-black-300">
-          {title || ""}
+          {title || type || ""}
         </h4>
         <p
           className={`text-sm font-medium capitalize leading-ll ${name ? "text-gray-400" : status === "pending" ? "text-orange-300" : "text-green-400"}`}

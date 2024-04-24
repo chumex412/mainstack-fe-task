@@ -5,19 +5,16 @@ import {
   useEffect,
   useCallback,
   forwardRef,
-  SetStateAction,
-  Dispatch,
   MouseEventHandler,
   KeyboardEventHandler,
-  SyntheticEvent,
-  useMemo
+  SyntheticEvent
 } from "react";
+import Image from "next/image";
 import { CustomSelectProps } from "../../../application/domain/entities/ui";
 import { KEY_CODES } from "@/utils/constant";
 
 import "./custom-select.css";
 import { expandIcon } from "../../../../public/assets/icons";
-import Image from "next/image";
 import Dropdown from "../dropdown";
 
 type InputRef = HTMLButtonElement;
@@ -117,19 +114,20 @@ const CustomSelect = forwardRef<InputRef, CustomSelectProps>(
             type="button"
             aria-controls="ds-select-list"
             aria-haspopup={true}
-            className="select-btn flex w-full items-center justify-between rounded-lg border border-solid bg-gray-50 px-3 py-2.5 text-left text-sm"
+            className="select-btn justify-between rounded-lg border border-solid bg-gray-50 px-3 py-2.5 text-left text-sm"
             //name={name}
             //id={name}
             ref={ref}
             onClick={toggleDropdown}
             onKeyDown={onButtonKeydown}
           >
-            <span></span>
+            <span className=""></span>
             <Image src={expandIcon} className="caret" alt="Caret icon" />
           </button>
           <Dropdown
             options={options}
             name={name}
+            width={"100%"}
             type="select"
             onSelect={handleSelect}
             overlayTop={overlayTop}

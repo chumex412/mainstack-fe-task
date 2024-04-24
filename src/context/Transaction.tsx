@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dispatch,
   ReactNode,
@@ -5,7 +7,8 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useReducer
+  useReducer,
+  useState
 } from "react";
 import transactionReducer from "../application/store/reducers/transaction";
 import {
@@ -17,19 +20,23 @@ import { Transaction } from "@/application/domain/entities/ui";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/application/services/request";
 import { createNewTxnVals } from "@/application/domain/model/transaction";
+import { init } from "next/dist/compiled/webpack/webpack";
 
 const TransactionContext = createContext<
   TransactionContextValue<Transaction, Dispatch<TransactionAction<Transaction>>>
 >({
   txns: [],
-  filters: { options: [], type: "", showModal: false },
+  initData: [],
+  filters: { options: [], showModal: false, dateRange: "" },
   txnDispatch: () => {}
 });
 
 export const TransactionProvider = ({ children }: { children: ReactNode }) => {
+  const [initTxnData, setInitTxnData] = useState<Transaction[]>();
   const [transactions, txnDispatch] = useReducer(transactionReducer, {
     txns: [],
-    filters: { options: [], type: "", showModal: false }
+    initData: [],
+    filters: { options: [], showModal: false, dateRange: "" }
   });
 
   const { data, isLoading } = useQuery<TransactionDataType[] | undefined>({
@@ -48,17 +55,22 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
           return dateA < dateB ? -1 : dateA > dateB ? 1 : 0;
         });
 
+      if (!initTxnData?.length) {
+        setInitTxnData(txns);
+      }
+
       txnDispatch({ type: "transaction/all", payload: txns });
     }
-  }, [data, transactions.filters.options, txnDispatch]);
+  }, [data, transactions.filters.options, txnDispatch, initTxnData]);
 
   const cxtValue = useMemo(
     () => ({
       txns: transactions.txns,
+      initData: initTxnData,
       filters: transactions.filters,
       txnDispatch
     }),
-    [transactions, txnDispatch]
+    [transactions, txnDispatch, initTxnData]
   );
 
   return (

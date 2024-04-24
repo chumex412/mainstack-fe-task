@@ -7,7 +7,8 @@ export const createNewTxnVals = (
 ): Transaction => {
   return {
     name: transaction?.metadata?.name || "",
-    title: transaction?.metadata?.product_name || transaction.type || "",
+    title: transaction?.metadata?.product_name || "",
+    type: transaction?.type || "",
     status: transaction.status,
     amount: transaction.amount,
     timestamp: getFormatedDate(transaction.date, "en-US")

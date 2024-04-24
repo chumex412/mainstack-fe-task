@@ -1,4 +1,5 @@
 import Balance from "./Balance";
+import FilterEmptyState from "./FilterEmptyState";
 import FilterModal from "./FilterModal";
 import Payout from "./Payout";
 import PayoutChart from "./PayoutChart";
@@ -8,6 +9,7 @@ import TransactionList from "./TransactionList";
 
 export {
   Balance,
+  FilterEmptyState,
   FilterModal,
   Payout,
   PayoutChart,

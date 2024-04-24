@@ -1,9 +1,9 @@
 export const transactionTypes = [
   { label: "Store Transactions", value: "Store Transactions" },
   { label: "Get Tipped", value: "Get Tipped" },
-  { label: "Withdrawals", value: "Withdrawals" },
-  { label: "Chargebacks", value: "Cashbacks" },
-  { label: "Cashbacks", value: "Cashbacks" },
+  { label: "Withdrawals", value: "Withdrawal" },
+  { label: "Chargebacks", value: "Cashback" },
+  { label: "Cashbacks", value: "Cashback" },
   { label: "Refer & Earn", value: "Refer & Earn" }
 ];
 

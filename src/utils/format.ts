@@ -27,3 +27,31 @@ export const getFormatedDate = (
     createDateFormatOptions("2-digit", "short", "numeric")
   ).format(date);
 };
+
+export function addDays(date: Date | string | number, days: number) {
+  let result = new Date(date);
+
+  result.setDate(result.getDate() + days);
+
+  let month =
+    result.getMonth() + 1 < 10
+      ? "0" + (result.getMonth() + 1)
+      : result.getMonth() + 1;
+
+  let day = result.getDate() < 10 ? "0" + result.getDate() : result.getDate();
+  let year = result.getFullYear();
+
+  return [month, day, year].join("-");
+}
+
+export function calculateDaysBetweenDates(
+  startDate: Date | string,
+  endDate: Date | string
+) {
+  const oneDay = 24 * 60 * 60 * 1000;
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const differenceMs = Math.abs(end.getTime() - start.getTime());
+  const daysDifference = Math.round(differenceMs / oneDay);
+  return daysDifference;
+}

@@ -27,7 +27,11 @@ type FilterDateAction = {
   payload: { date: Date | string; action: "startDate" | "endDate" | "period" };
 };
 
-export type FilterAction = FilterDateAction;
+type FilterClearAction = {
+  type: "filter/clear";
+};
+
+export type FilterAction = FilterDateAction | FilterClearAction;
 
 export type FilterState = {
   endDate: Date | null;
@@ -37,28 +41,16 @@ export type FilterState = {
 
 type FilterActionPayload<T> = {
   txns: T[];
-  filters: {
-    option: TxnFilterOptionsTypes;
-    type: string;
-  };
+  filters: string[];
+  range: string;
 };
 
-type TransactionFilterAction<T> = {
-  type: "transaction/filter";
-  payload: FilterActionPayload<T>;
-};
-
-type AllTransaction<T> = {
-  type: "transaction/all";
-  payload: T[];
-};
-
-type TxnFilterOptionsTypes = "none" | "range" | "type" | "status";
+type TxnFilterOptionsTypes = "range" | "type" | "status";
 
 type TxnFiltersType = {
-  options: TxnFilterOptionsTypes[];
-  type: string;
+  options: string[];
   showModal: boolean;
+  dateRange: string;
 };
 
 export type FilterOptionType = {
@@ -71,6 +63,20 @@ type ModalPayload = {
   isVisible: boolean;
 };
 
+type TransactionFilterAction<T> = {
+  type: "transaction/filter";
+  payload: FilterActionPayload<T>;
+};
+
+type AllTransaction<T> = {
+  type: "transaction/all";
+  payload: T[];
+};
+
+type ClearFilterAction = {
+  type: "transaction/filter/clear";
+};
+
 type TransactionModalAction = {
   type: "transaction/modal";
   payload: ModalPayload;
@@ -79,10 +85,12 @@ type TransactionModalAction = {
 export type TransactionAction<T> =
   | AllTransaction<T>
   | TransactionFilterAction<T>
-  | TransactionModalAction;
+  | TransactionModalAction
+  | ClearFilterAction;
 
 export type TransactionState<T> = {
   txns: T[];
+  initData: T[];
   filters: TxnFiltersType;
 };
 
@@ -114,6 +122,7 @@ export interface GenericList<T> {
 
 export interface TransactionContextValue<S, T> {
   txns: S[];
+  initData: S[] | undefined;
   filters: TxnFiltersType;
   txnDispatch: T;
 }

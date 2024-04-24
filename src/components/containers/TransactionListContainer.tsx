@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  FilterEmptyState,
   FilterModal,
   TransactionHeader,
   TransactionList
@@ -21,10 +22,13 @@ const TransactionContainer = () => {
       <div className="mx-auto flex w-full max-w-[1159px] flex-col gap-y-8">
         <TransactionHeader
           total={txns.length}
-          period={filters.options.includes("range") ? filters.type : ""}
+          filters={filters.options.length}
+          period={filters.options.includes("range") ? filters.dateRange : ""}
           onOpen={onOpen}
         />
-        <TransactionList list={txns} />
+        <section className="pb-6">
+          {txns.length ? <TransactionList list={txns} /> : <FilterEmptyState />}
+        </section>
       </div>
       <FilterModal />
     </section>

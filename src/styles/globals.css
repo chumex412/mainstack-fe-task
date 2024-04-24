@@ -6,14 +6,13 @@
   :root {
     /* TYPOGRAPHY */
 
-    --type-scale: 1;
-    --type-scale-base: 0.9;
-    --type-scale-2: 0.33;
-    --type-scale-3: 0.37;
-    --sm: calc(0.875em * var(--type-scale));
+    --type-scale: 0.8;
+    --type-scale-base: 0.85;
+    --type-scale-sm: 0.9;
+    --sm: calc(0.875em * var(--type-scale-sm));
     --base: calc(1em * var(--type-scale-base));
-    --h3: calc(1.5rem * var(--type-scale-3));
-    --h2: calc(1.75rem * var(--type-scale-2));
+    --h3: calc(1.5rem * var(--type-scale));
+    --h2: calc(1.75rem * var(--type-scale));
     --h1: calc(2.25rem * var(--type-scale));
 
     /* LINE HEIGHT */
@@ -41,16 +40,17 @@
 
   @media only screen and (min-width: theme("screens.md")) {
     :root {
-      --type-scale-2: 0.7;
-      --type-scale-3: 0.65;
+      --type-scale-base: 0.9;
+      --type-scale-sm: 0.95;
+      --type-scale: 0.9;
     }
   }
 
   @media only screen and (min-width: theme("screens.xl")) {
     :root {
       --type-scale-base: 1;
-      --type-scale-2: 1;
-      --type-scale-3: 1;
+      --type-scale-sm: 1;
+      --type-scale: 1;
     }
   }
 }
@@ -65,6 +65,17 @@
   .container {
     margin: 0 auto;
     padding: 0 1rem;
+  }
+
+  .app-bar {
+    align-self: flex-end;
+    box-shadow:
+      0px 6px 12px 0px #5c738314,
+      0px 4px 8px 0px #5c738314;
+  }
+
+  .app-bar svg {
+    display: inline-block;
   }
 
   .modal-open {

@@ -10,12 +10,16 @@ import {
 } from "@/application/data/transactions";
 import { DateTime } from "@/components/lib";
 import filterReducer from "@/application/store/reducers/filter";
-import { FILTER_DATE } from "@/application/store/types/filter";
+import { FILTER_CLEAR, FILTER_DATE } from "@/application/store/types/filter";
 import useTransaction from "@/context/Transaction";
-import { TRANSACTION_MODAL } from "@/application/store/types/transaction";
+import {
+  FILTER_TRANSACTIONS,
+  TRANSACTION_MODAL
+} from "@/application/store/types/transaction";
 import { notify } from "@/components/lib/Notification";
 import { FilterOptionType } from "@/application/domain/entities/general";
 import { addDays } from "@/utils/format";
+import { filterTxns } from "@/application/usecases/ui";
 
 const FilterModalContent = ({
   showTypesOptions,
@@ -29,7 +33,7 @@ const FilterModalContent = ({
     period: ""
   });
 
-  const { txnDispatch } = useTransaction();
+  const { txnDispatch, txns, initData } = useTransaction();
 
   const txnTypeRef = useRef<HTMLButtonElement | null>(null);
   const txnStatRef = useRef<HTMLButtonElement | null>(null);
@@ -37,13 +41,16 @@ const FilterModalContent = ({
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    console.log({ txns });
+
     const typeContent = txnTypeRef.current?.children[0].textContent || "";
     const statusContent = txnStatRef.current?.children[0].textContent || "";
+    console.log({ typeContent, statusContent, filterState });
 
     if (
-      !typeContent ||
-      !statusContent ||
-      !filterState.period ||
+      !typeContent &&
+      !statusContent &&
+      !filterState.period &&
       !filterState.startDate
     ) {
       notify("Please select one of the filter options to proceed", "error");
@@ -60,22 +67,14 @@ const FilterModalContent = ({
       return;
     }
 
-    if (filterState.period && filterState.startDate) {
-      notify(
-        "Select a single date range either from the badges above or the date inputs",
-        "error"
-      );
-      return;
-    }
-
     const filterOptions: FilterOptionType = {};
 
     if (typeContent) {
-      filterOptions["type"] = typeContent;
+      filterOptions["type"] = typeContent.toLowerCase();
     }
 
     if (statusContent) {
-      filterOptions["status"] = statusContent;
+      filterOptions["status"] = statusContent.toLowerCase();
     }
 
     let startDate = "";
@@ -87,7 +86,7 @@ const FilterModalContent = ({
       if (filterState.period === "Today") {
         startDate = addDays(Date.now(), 0);
         endDate = addDays(Date.now(), 0);
-      } else if (filterState.period === "Last 7days") {
+      } else if (filterState.period === "Last 7 days") {
         startDate = addDays(Date.now(), -14);
         endDate = addDays(Date.now(), 7);
       } else if (filterState.period === "This month") {
@@ -96,7 +95,7 @@ const FilterModalContent = ({
           -date.getDate()
         );
         endDate = addDays(new Date(), 0);
-      } else if (filterState.period === "Last 3months") {
+      } else if (filterState.period === "Last 3 months") {
         startDate = addDays(new Date(date.setMonth(date.getMonth() - 3)), -7);
         endDate = addDays(Date.now(), 0);
       }
@@ -111,7 +110,20 @@ const FilterModalContent = ({
       filterOptions["range"] = `${startDate} - ${endDate}`;
     }
 
-    txnDispatch({ type: TRANSACTION_MODAL, payload: { isVisible: false } });
+    const newTxns = filterTxns(initData, filterOptions);
+
+    txnDispatch({
+      type: FILTER_TRANSACTIONS,
+      payload: {
+        txns: newTxns,
+        filters: Object.keys(filterOptions),
+        range: `${startDate} - ${endDate}`
+      }
+    });
+
+    filterDispatch({ type: FILTER_CLEAR });
+    txnStatRef.current!.children[0].textContent = "";
+    txnTypeRef.current!.children[0].textContent = "";
   };
 
   const onStartDateChange = useCallback(
@@ -145,6 +157,11 @@ const FilterModalContent = ({
     },
     [filterDispatch]
   );
+
+  const onClear = useCallback(() => {
+    txnDispatch({ type: TRANSACTION_MODAL, payload: { isVisible: false } });
+    filterDispatch({ type: FILTER_CLEAR });
+  }, [txnDispatch, filterDispatch]);
 
   return (
     <section className="filter-content absolute left-0 top-0 h-full w-full px-[22px] py-6">
@@ -198,6 +215,7 @@ const FilterModalContent = ({
             type="button"
             value="Clear"
             customClass="bg-white text-black-300 w-full border-gray-50"
+            onClick={onClear}
           />
           <PrimaryButton
             value="Apply"
