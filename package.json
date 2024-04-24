@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.31.0",
+    "@types/react-datepicker": "^6.2.0",
     "axios": "^1.6.8",
     "next": "14.2.2",
     "react": "^18",
     "react-datepicker": "^6.9.0",
     "react-dom": "^18",
+    "react-toastify": "^10.0.5",
     "recharts": "^2.12.6"
   },
   "devDependencies": {

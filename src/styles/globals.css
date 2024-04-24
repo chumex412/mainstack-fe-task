@@ -35,7 +35,7 @@
   }
 
   body {
-    /* font-family: theme("fontFamily.satoshi"); */
+    font-family: theme("fontFamily.degular");
     min-height: 100vh;
   }
 
@@ -69,5 +69,14 @@
 
   .modal-open {
     overflow: hidden;
+  }
+
+  .filter-content > form {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  .filter-content .react-datepicker-wrapper {
+    width: 100%;
   }
 }

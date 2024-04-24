@@ -8,6 +8,12 @@ export interface NavLinksProps {
   links: Link[];
 }
 
+export interface MenuButtonProps {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 export interface BalanceLabelProps {
   title: string;
   amount: number;
@@ -56,14 +62,23 @@ export type CustomSelectProps = {
   onOptionsShow: (val: boolean) => void;
 };
 
-export type DropdownType<E> = {
+export type DropdownType<T, S> = {
   type: "select" | "menu";
+  width: string | number;
   name?: string;
   options: OptionsTypes[];
-  onSelect: E;
+  header?: S;
+  onSelect: T;
   show: boolean;
   displayOptions?: (val: boolean) => void;
   overlayTop: number;
   highlightedIndex: number | null;
   highlightOption: (optionIndex: number | null) => void;
 };
+
+export interface BadgeProps<T> {
+  title: string;
+  onClick: (e: T) => void;
+  index: number;
+  selected: boolean;
+}

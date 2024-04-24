@@ -1,7 +1,6 @@
 import DatePicker, { ReactDatePickerProps } from "react-datepicker";
 import { memo } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import "./date-time.css";
 import { CustomDateTime } from "@/application/domain/entities/lib";
 
 type DateTimePickerProps = CustomDateTime & ReactDatePickerProps;
@@ -39,9 +38,9 @@ const DateTime = memo(function DateTime({
   }
 
   return (
-    <div>
+    <div className="w-full">
       <DatePicker
-        className="w-full"
+        className="w-full rounded-xl bg-gray-50 px-4 py-3"
         calendarClassName="pp-date-picker"
         {...dateProps}
       />
