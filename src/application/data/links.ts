@@ -1,4 +1,11 @@
 import {
+  GroupIcon,
+  HomeIcon,
+  InsertIcon,
+  PaymentIcon,
+  WidgetIcon
+} from "@/components/icons";
+import {
   chatsIcon,
   groupIcon,
   homeIcon,
@@ -11,27 +18,27 @@ export const navLinks = [
   {
     path: "/",
     name: "home",
-    icon: homeIcon
+    Icon: HomeIcon
   },
   {
     path: "/analytics",
     name: "analytics",
-    icon: inserChartIcon
+    Icon: InsertIcon
   },
   {
     path: "/revenue",
     name: "revenue",
-    icon: ""
+    Icon: PaymentIcon
   },
   {
     path: "/crm",
     name: "CRM",
-    icon: groupIcon
+    Icon: GroupIcon
   },
   {
-    path: "/apps",
+    path: "/app",
     name: "apps",
-    icon: widgetIcon
+    Icon: WidgetIcon
   }
 ];
 

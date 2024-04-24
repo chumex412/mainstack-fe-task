@@ -19,6 +19,7 @@ export interface BalanceProps {
 
 export interface TransactionHeaderProps {
   total: number;
+  filters: number;
   period: string;
   onOpen: () => void;
 }
