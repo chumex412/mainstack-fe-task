@@ -12,7 +12,7 @@ const BtnWithIcon = memo(function BtnWithIcon({
 }: ButtonType) {
   return (
     <button
-      className={`flex items-center gap-x-2.5 rounded-[100px] border bg-gray-50 px-[30px] py-3 text-sm font-semibold text-black-300 transition-colors duration-300 ${customClass}`}
+      className={`flex items-center justify-center gap-x-2.5 rounded-[100px] border bg-gray-50 px-[30px] py-3 text-sm font-semibold text-black-300 transition-colors duration-300 ${customClass}`}
       {...props}
     >
       {label}

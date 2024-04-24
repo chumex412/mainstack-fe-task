@@ -27,6 +27,7 @@ const TransactionContext = createContext<
 >({
   txns: [],
   initData: [],
+  txnLoading: false,
   filters: { options: [], showModal: false, dateRange: "" },
   txnDispatch: () => {}
 });
@@ -36,6 +37,7 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
   const [transactions, txnDispatch] = useReducer(transactionReducer, {
     txns: [],
     initData: [],
+    txnLoading: false,
     filters: { options: [], showModal: false, dateRange: "" }
   });
 
@@ -67,10 +69,11 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
     () => ({
       txns: transactions.txns,
       initData: initTxnData,
+      txnLoading: isLoading,
       filters: transactions.filters,
       txnDispatch
     }),
-    [transactions, txnDispatch, initTxnData]
+    [transactions, txnDispatch, initTxnData, isLoading]
   );
 
   return (

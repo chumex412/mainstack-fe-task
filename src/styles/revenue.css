@@ -8,9 +8,18 @@
     gap: 20px;
   }
 
+  .payout-details {
+    grid-row: 2 / 3;
+  }
+
+  .payout-chart {
+    grid-row: 3 / 4;
+  }
+
   @media only screen and (min-width: theme("screens.xl")) {
     .payout-main {
-      grid-template-columns: 770px 271px;
+      grid-template-columns: 1fr 271px;
+      column-gap: 120px;
       justify-content: space-between;
     }
 

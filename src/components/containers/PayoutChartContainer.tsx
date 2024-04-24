@@ -2,16 +2,25 @@
 
 import useTransaction from "@/context/Transaction";
 import { PayoutChart } from "../pages/revenue";
+import { SkeletonLoader } from "../lib";
 
 const PayoutChartContainer = () => {
-  const { txns } = useTransaction();
+  const { txns, txnLoading } = useTransaction();
 
   return (
-    <PayoutChart
-      data={
-        txns.length ? txns : [{ timestamp: "", amount: 0, title: "", type: "" }]
-      }
-    />
+    <>
+      {txnLoading ? (
+        <SkeletonLoader count={5} />
+      ) : (
+        <PayoutChart
+          data={
+            txns.length
+              ? txns
+              : [{ timestamp: "", amount: 0, title: "", type: "" }]
+          }
+        />
+      )}
+    </>
   );
 };
 

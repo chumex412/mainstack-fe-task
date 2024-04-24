@@ -23,17 +23,15 @@ const NavBar = () => {
   const lastName = data?.last_name || "";
 
   return (
-    <nav className="nav-bar py-4">
-      <section className="container flex items-center justify-between p-3">
-        <div>
-          <div>
-            <Image src={logo} alt="Mainstack logo" />
-          </div>
+    <nav className="nav-bar sticky top-0 z-50 bg-white py-4">
+      <section className="nav-container container items-center justify-between p-3">
+        <div className="nav-brand">
+          <Image src={logo} alt="Mainstack logo" />
         </div>
-        <div>
-          <NavLinks links={navLinks} />
-        </div>
-        <div className="flex items-center gap-2">
+
+        <NavLinks links={navLinks} />
+
+        <div className="nav-right flex items-center justify-end gap-2 lg:justify-start">
           <div className="flex items-center gap-2">
             <button className="flex h-10 w-10 items-center justify-center rounded-full">
               <Image src={notificationIcon} alt="Notification icon" />
