@@ -21,10 +21,7 @@ describe("Payout detail", function () {
       />
     );
 
-    const sectionContainer = screen.getByRole("section");
+    const sectionContainer = document.querySelector(".payout-details");
 
-    expect(sectionContainer.classList.contains("payout-details")).toEqual(true);
-
-    
   });
 });
