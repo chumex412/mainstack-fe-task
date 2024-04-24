@@ -39,32 +39,30 @@ const TransactionHeader = ({
         )}
       </span>
     ),
-    [total]
+    [filters]
   );
 
   return (
-    <section>
-      <section className="flex items-center justify-between gap-x-4">
-        <div>
-          <h3 className="text-base font-bold leading-ll text-black-300">
-            {total} Transaction{total > 1 ? "s" : ""}
-          </h3>
-          <p className="text-sm font-medium leading-ll text-gray-400">
-            {period
-              ? `Your transactions for the last ${range}`
-              : "Your transactions for All Time"}
-          </p>
-        </div>
-        <div className="flex items-center gap-x-3">
-          <BtnWithIcon
-            label={label}
-            onClick={onOpen}
-            type="button"
-            icon={expandIcon}
-          />
-          <BtnWithIcon label="Export" icon={downloadIcon} />
-        </div>
-      </section>
+    <section className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="text-center md:text-left">
+        <h3 className="text-base font-bold leading-ll text-black-300">
+          {total} Transaction{total > 1 ? "s" : ""}
+        </h3>
+        <p className="text-sm font-medium leading-ll text-gray-400">
+          {period
+            ? `Your transactions for the last ${range}`
+            : "Your transactions for All Time"}
+        </p>
+      </div>
+      <div className="flex flex-col items-stretch  gap-3 md:flex-row md:items-center">
+        <BtnWithIcon
+          label={label}
+          onClick={onOpen}
+          type="button"
+          icon={expandIcon}
+        />
+        <BtnWithIcon label="Export" icon={downloadIcon} />
+      </div>
     </section>
   );
 };
