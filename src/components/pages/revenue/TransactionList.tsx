@@ -8,7 +8,8 @@ const TransactionList = ({ list }: GenericList<Transaction>) => {
       {list.map((item, idx) => (
         <TransactionItem
           key={item.title || "" + idx}
-          title={item.title}
+          title={item.title || ""}
+          type={item.type || ""}
           timestamp={item.timestamp}
           amount={item.amount}
           name={item.name}
