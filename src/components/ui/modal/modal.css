@@ -25,6 +25,8 @@
   }
 
   .modal {
+    display: grid;
+    grid-template-rows: auto 1fr;
     transition: transform 0.35s ease-in-out;
     transition-delay: 0.2s;
     height: 100%;

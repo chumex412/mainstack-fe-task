@@ -39,4 +39,10 @@
   .ds-select__option input[type="checkbox"] {
     accent-color: theme("colors.black.300");
   }
+
+  .ds-menu__item {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 1rem;
+  }
 }

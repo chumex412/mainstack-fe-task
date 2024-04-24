@@ -1,15 +1,27 @@
 import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 import {
   chatsIcon,
   logo,
-  menuIcon,
   notificationIcon
 } from "../../../../public/assets/icons";
 import NavLinks from "./NavLInks";
 import { navLinks } from "@/application/data/links";
 import "./navbar.css";
 
+import { getData } from "@/application/services/request";
+import { UserData } from "@/application/domain/entities/general";
+import MenuButton from "./MenuButton";
+
 const NavBar = () => {
+  const { data } = useQuery<UserData | undefined>({
+    queryKey: ["user"],
+    queryFn: () => getData("user")
+  });
+
+  const firstName = data?.first_name || "";
+  const lastName = data?.last_name || "";
+
   return (
     <nav className="nav-bar py-4">
       <section className="container flex items-center justify-between p-3">
@@ -30,14 +42,11 @@ const NavBar = () => {
               <Image src={chatsIcon} alt="Chats icons" />
             </button>
           </div>
-          <div className="flex items-center gap-2 rounded-[100px] bg-[#EFF1F6] p-1">
-            <p className="bg-c-gradient leading-ll flex h-8 w-8 items-center justify-center rounded-full text-sm text-white">
-              OJ
-            </p>
-            <button>
-              <Image src={menuIcon} alt="Menu icon" />
-            </button>
-          </div>
+          <MenuButton
+            firstName={firstName}
+            lastName={lastName}
+            email={data?.email || ""}
+          />
         </div>
       </section>
     </nav>
