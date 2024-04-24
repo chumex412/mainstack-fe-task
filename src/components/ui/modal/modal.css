@@ -8,11 +8,9 @@
     height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: start;
     background-color: #070a1066;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
     padding: 24px;
     opacity: 0;
     visibility: hidden;
@@ -49,5 +47,11 @@
   .modal-header {
     display: grid;
     grid-template-columns: 1fr auto;
+  }
+
+  @media only screen and (min-width: theme("screens.lg")) {
+    .modal-overlay {
+      justify-content: flex-end;
+    }
   }
 }
