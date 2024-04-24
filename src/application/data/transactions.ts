@@ -12,3 +12,10 @@ export const transactionStat = [
   { label: "Pending", value: "Pending" },
   { label: "Failed", value: "Failed" }
 ];
+
+export const dateRange = [
+  "Today",
+  "Last 7 days",
+  "This month",
+  "Last 3 months"
+];
