@@ -112,7 +112,7 @@ const Dropdown = memo(function Dropdown({
       role="menu"
     >
       <div
-        className={`ds-select__options--wrapper h-[271px] ${type === "select" ? "p-2" : ""} overflow-auto`}
+        className={`ds-select__options--wrapper ${type === "select" ? "h-[271px] p-2" : ""} overflow-auto`}
       >
         {header && type === "menu" ? header : null}
         <ul className={`w-full`}>
