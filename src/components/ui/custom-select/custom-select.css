@@ -13,6 +13,18 @@
 		-webkit-transform: rotate(180deg);
 	}
 
+	.select-btn {
+		display: grid;
+		grid-template-columns: 1fr 20px;
+		align-items: center;
+		width: 100%;
+	}
+
+	.select-btn span {
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
 	.ds-select__overylay {
 
 	}

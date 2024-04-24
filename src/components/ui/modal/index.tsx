@@ -62,7 +62,9 @@ const Modal = ({
               <Image src={closeIcon} alt="Close icon" />
             </button>
           </section>
-          <section className="modal-content">{children}</section>
+          <section className="modal-content relative h-full">
+            {children}
+          </section>
         </section>
       </section>
     </>
