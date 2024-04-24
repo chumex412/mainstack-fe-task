@@ -8,4 +8,14 @@
     border-radius: 100px;
     border: 2px solid #fff;
   }
+
+  .active {
+    background: theme("colors.black.300");
+    color: theme("colors.white");
+    border-radius: 100px;
+  }
+
+  .active svg .nav-icon {
+    fill: theme("colors.white");
+  }
 }
